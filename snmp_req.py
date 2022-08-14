@@ -5,8 +5,9 @@ def snmp_req(self,ip,OID):
         try:
             gen = cmdgen.CommandGenerator()
             errorIndication,errorStatus,errorIndex,varBinds = gen.getCmd(
+                xk= input('PORT 161 / 162 ?')
                 cmdgen.CommunityData('server',self.community,1),
-                cmdgen.UdpTransportTarget((ip,161)),
+                cmdgen.UdpTransportTarget((ip,xk)),
                 printf("===OID=== ")
                 '%s'%OID
             )
@@ -15,3 +16,5 @@ def snmp_req(self,ip,OID):
         except Exception as exce:
             res2= None
         return res2
+
+                
